@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,CustomeDeleGate {
+    func TextDidEntered(name: String) {
+         name1.text=name
+    }
+    
+   
+    
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var name1: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +29,20 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="abc"
+        {
+            var sc=segue.destination as! SecondViewController
+            sc.delegate=self
+        }
+    }
 
-
+    
+    @IBAction func saveData(_ sender: UIButton) {
+       
+    }
+    
+    
+    
 }
 
